@@ -5,7 +5,6 @@ public class PhoneBook{
   public ArrayList<Contact> contacts;
   
   public PhoneBook(){
-    // create arraylist of contacts by reading data from the file
     contacts = new ArrayList<>();
   }
 
@@ -16,30 +15,53 @@ public class PhoneBook{
     try {
       fileReader = new Scanner(file);
     } catch(FileNotFoundException e){
-      System.out.println("File was not found.")
+      System.out.println("File was not found.");
     }
+
+    String[] info;
+    String line;
+
+    while(fileReader.hasNextLine()){
+      line = fileReader.nextLine();
+      info = line.split(",");
+
+      if(info[2].equals("-")){
+        info[2] = "0";
+      }
+
+      if(info[3].equals("-")){
+        info[3] = "0";
+      }
+
+      Contact contact = new Contact(info[0], info[1], Long.valueOf(info[2]), 
+                                    Long.valueOf(info[3]), info[4]);
+      contacts.add(contact);
+    }
+    fileReader.close();
   }
 
   public void add(Contact c){
-    // add contact to arraylist
     contacts.add(c);
   }
 
   public String toString(){
     // returns the entire phone book as String
-    return null;
+    for(int i = 0; i < contacts.size(); i++){
+      System.out.println(contacts.get(i));
+    }
+    return " ";
   }
 
-  public void bubbleSort(){
-    // sort phonebook by first name
-    for(int i = 0; i < contacts.size(); i++){
-      for(int j = i+1; j < contacts.size(); j++){
-        if(contacts.get(j).getFirstName().compareTo(contacts.get(i).getFirstName())<0){
-          //
-        }
-      }
-    }
-  }
+  // public void bubbleSort(){
+  //   // sort phonebook by first name
+  //   for(int i = 0; i < contacts.size(); i++){
+  //     for(int j = i+1; j < contacts.size(); j++){
+  //       if(contacts.get(j).getFirstName().compareTo(contacts.get(i).getFirstName())<0){
+  //         //
+  //       }
+  //     }
+  //   }
+  // }
 
   public void selectionSort(){
     // sort phone book by last name
@@ -52,7 +74,6 @@ public class PhoneBook{
         if(value.compareTo(smallest.getLastName())<0){
           //
         }
-          
       }
       if(smallestIndex != i){
         //
@@ -60,7 +81,7 @@ public class PhoneBook{
     }
   }
 
-  public boolean binarySearch(){
+  public boolean binarySearch(String lastName){
     // search contact by last name using binary search
     // return true if contact is found
     if(this.contacts.size() >= 0){
@@ -74,7 +95,7 @@ public class PhoneBook{
 
       while(min <= max){
         int middle = (min + max) / 2;
-        int current = lastName.compareToIgnoreCase(String.valueOf(contacts.get(middle).getLastName()))
+        int current = lastName.compareToIgnoreCase(String.valueOf(contacts.get(middle).getLastName()));
 
         if(current == 0){
           System.out.println(contacts.get(middle).toString());
@@ -86,7 +107,6 @@ public class PhoneBook{
         }
       }
     }
-
     return false;
   }
 }

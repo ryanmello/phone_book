@@ -14,10 +14,48 @@ public class Contact{
     this.emailAddress = emailAddress;
   }
 
-  // setter & getter methods
-  // toString
+  public String getFirsName(){
+    return firstName;
+  }
 
+  public void setFirstName(String firstName){
+    this.firstName = firstName;
+  }
+
+  public String getLastName(){
+    return lastName;
+  }
+
+  public void setLastName(String lastName){
+    this.lastName = lastName;
+  }
+
+  public long getHomeNumber(){
+    return homeNumber;
+  }
+
+  public void setHomeNumber(long homeNumber){
+    this.homeNumber = homeNumber;
+  }
+
+  public long getOfficeNumber(){
+    return officeNumber;
+  }
+
+  public void setOfficeNumber(long officeNumber){
+    this.officeNumber = officeNumber;
+  }
+
+  public String getEmailAddress(){
+    return emailAddress;
+  }
+
+  public void setEmailAddress(String emailAddress){
+    this.emailAddress = emailAddress;
+  }
+  
+  // toString
   public String toString(){
-    return null;
+    return firstName + " " + lastName + " " + homeNumber + " " + officeNumber + " " + emailAddress;
   }
 }

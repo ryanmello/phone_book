@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 class Main {
   private static PhoneBook phoneBook;
   private static File details;
@@ -28,13 +31,16 @@ class Main {
           break;
         case "B":
           System.out.println("Sorting by First Name\n");
-          phoneBook.bubbleSort();
+          //phoneBook.bubbleSort();
           break;
         case "L":
           System.out.println("Sorting by Last Name\n");
           phoneBook.selectionSort();
           break;
         case "S":
+          search();
+          break;
+        case "A":
           add();
           break;
         case "Q":
@@ -52,9 +58,36 @@ class Main {
     System.out.println(phoneBook.toString());
   }
 
-  //
-  //
-  //
-  //
+  public static void search(){
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter the last name: ");
+    String lName = input.nextLine();
+    System.out.println(phoneBook.binarySearch(lName));
+  }
 
+  public static void add(){
+    String first, last, email;
+    Long home, office;
+    
+    System.out.println();
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter the first name: ");
+    first = input.nextLine();
+    
+    System.out.println("Enter the last name: ");
+    last = input.nextLine();
+
+    System.out.println("Enter the email address: ");
+    email = input.nextLine();
+    
+    System.out.println("Enter the home number: ");
+    home = input.nextLong();
+    
+    System.out.println("Enter the office number: ");
+    office = input.nextLong();
+    
+
+    //Contact contact = new Contact(first, last, home, office, email);
+    
+  }
 }
