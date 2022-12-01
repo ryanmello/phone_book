@@ -55,18 +55,18 @@ public class PhoneBook{
   public void bubbleSort(){
     // sort phonebook by first name
     for(int i = 0; i < contacts.size(); i++){
-      for(int j = i+1; j < contacts.size() - 1; j++){
+      for(int j = i+1; j < contacts.size(); j++){
         if(contacts.get(j).getFirstName().compareTo(contacts.get(i).getFirstName())<0){
           /*
            * if the j index is less than the i index
            * have the j index switch places with the i index
            * j index comes after i index
            * if number in front is less than number behind, swap places
+           * 
            */
           Contact temp = contacts.get(j);
-          contacts.set(j, contacts.get(j+1));
-          contacts.set(j+1, temp);
-          
+          contacts.set(j, contacts.get(i));
+          contacts.set(i, temp);
         }
       }
     }
