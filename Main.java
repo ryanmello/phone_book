@@ -31,7 +31,7 @@ class Main {
           break;
         case "B":
           System.out.println("Sorting by First Name\n");
-          //phoneBook.bubbleSort();
+          phoneBook.bubbleSort();
           break;
         case "L":
           System.out.println("Sorting by Last Name\n");
@@ -85,9 +85,12 @@ class Main {
     
     System.out.println("Enter the office number: ");
     office = input.nextLong();
-    
 
-    //Contact contact = new Contact(first, last, home, office, email);
-    
+    System.out.println();
+    System.out.println("Addding " + first + " " + last + "...");
+    System.out.println();
+
+    Contact contact = new Contact(first, last, home, office, email);
+    phoneBook.add(contact);
   }
 }

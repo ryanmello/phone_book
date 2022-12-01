@@ -52,31 +52,43 @@ public class PhoneBook{
     return " ";
   }
 
-  // public void bubbleSort(){
-  //   // sort phonebook by first name
-  //   for(int i = 0; i < contacts.size(); i++){
-  //     for(int j = i+1; j < contacts.size(); j++){
-  //       if(contacts.get(j).getFirstName().compareTo(contacts.get(i).getFirstName())<0){
-  //         //
-  //       }
-  //     }
-  //   }
-  // }
+  public void bubbleSort(){
+    // sort phonebook by first name
+    for(int i = 0; i < contacts.size(); i++){
+      for(int j = i+1; j < contacts.size() - 1; j++){
+        if(contacts.get(j).getFirstName().compareTo(contacts.get(i).getFirstName())<0){
+          /*
+           * if the j index is less than the i index
+           * have the j index switch places with the i index
+           * j index comes after i index
+           * if number in front is less than number behind, swap places
+           */
+          Contact temp = contacts.get(j);
+          contacts.set(j, contacts.get(j+1));
+          contacts.set(j+1, temp);
+          
+        }
+      }
+    }
+  }
 
   public void selectionSort(){
-    // sort phone book by last name
     for(int i = 0; i < contacts.size(); i++){
       Contact smallest = contacts.get(i);
       int smallestIndex = i;
-      
-      for(int j = 1; j < contacts.size(); j++){
+
+      for(int j = i; j < contacts.size(); j++){
         String value = contacts.get(j).getLastName();
         if(value.compareTo(smallest.getLastName())<0){
-          //
+          smallestIndex = j;
+          smallest = contacts.get(j);
         }
       }
+      
       if(smallestIndex != i){
-        //
+        Contact temp = contacts.get(i);
+        contacts.set(i, smallest);
+        contacts.set(smallestIndex, temp);
       }
     }
   }
